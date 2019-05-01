@@ -1,12 +1,28 @@
 import React, {useReducer} from 'react'
 
 const initialState = {
+  accessToken: '',
+  refreshToken: '',
   messages: [],
   users: []
 } 
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case 'ADD_TOKENS':
+      return {
+        ...state,
+        accessToken: action.payload.accessToken,
+        refreshToken: action.payload.refreshToken,
+      }
+
+    case 'CLEAR_TOKEN':
+      return {
+        ...state,
+        accessToken: initialState.accessToken,
+        refreshToken: initialState.refreshToken,
+      }
+
     case 'ADD_MESSAGES':
       return {
         ...state,
